@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Motive AI Vision</title>
+    
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs"></script>
+</head>
+<body>
+
+    <div id="main-container">
+        <div id="drop-zone-global">
+            <div class="upload-msg">
+                <h1>Motive AI Vision</h1>
+                <p>Drop Image</p>
+                <div class="main-nav-buttons">
+                    <button class="primary-btn" onclick="document.getElementById('fileInput').click()">Select Image</button>
+                    <button class="secondary-btn" id="open-links-btn">Tickets Link &rarr;</button>
+                </div>
+            </div>
+            <input type="file" id="fileInput" accept="image/*" style="display:none">
+            
+            <div class="footer-credit">Open Source Tool by Arslan &copy; 2026</div>
+        </div>
+
+        <div id="links-panel" class="panel-hidden">
+            <div id="close-links-btn" class="back-nav-btn">
+                <span class="arrow">&larr;</span> Back to Home
+            </div>
+            
+            <div class="links-content">
+                <h2>Helpdesk & Support Links</h2>
+                <div class="grid-container">
+                    <a href="https://k2labs.atlassian.net/servicedesk/customer/user/requests?page=1&reporter=all&statuses=open" target="_blank" class="grid-card">
+                        <span class="card-icon">📋</span>
+                        <h3>STATUS CHECK</h3>
+                    </a>
+                    <a href="https://k2labs.atlassian.net/servicedesk/customer/portal/58/group/130/create/11135" target="_blank" class="grid-card">
+                        <span class="card-icon">🛡️</span>
+                        <h3>QA Helpdesk</h3>
+                    </a>
+                    <a href="https://k2labs.atlassian.net/servicedesk/customer/portal/52/group/-1" target="_blank" class="grid-card">
+                        <span class="card-icon">🧠</span>
+                        <h3>YODA Helpdesk</h3>
+                    </a>
+                    <a href="https://k2labs.atlassian.net/servicedesk/customer/portal/32/group/78/create/10862" target="_blank" class="grid-card">
+                        <span class="card-icon">💻</span>
+                        <h3>HARD/SOFTWARE Helpdesk</h3>
+                    </a>
+                    <a href="https://k2labs.atlassian.net/servicedesk/customer/portal/3563" target="_blank" class="grid-card">
+                        <span class="card-icon">🌐</span>
+                        <h3>IT Internal</h3>
+                    </a>
+                    <a href="https://k2labs.atlassian.net/servicedesk/customer/portal/89/group/-1" target="_blank" class="grid-card">
+                        <span class="card-icon">📅</span>
+                        <h3>OMEGA Scheduling</h3>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div id="viewer" class="viewer-hidden">
+            <div id="close-btn">&times;</div>
+            
+            <div class="content-area">
+                <canvas id="canvas"></canvas>
+                <div id="ai-status">AI Processing...</div>
+            </div>
+
+            <div class="top-left-controls">
+                <button id="ai-btn" class="main-action-btn">✨ AI Enhance: OFF</button>
+
+                <div class="control-box">
+                    <span class="label">Pixels</span>
+                    <div class="btn-group">
+                        <button class="step-btn" onclick="adjustPixel(-1)">-</button>
+                        <span id="pixel-val" class="val-display">0</span>
+                        <button class="step-btn" onclick="adjustPixel(1)">+</button>
+                    </div>
+                </div>
+
+                <div class="control-box">
+                    <span class="label">Brightness</span>
+                    <div class="btn-group">
+                        <button class="step-btn" onclick="adjustBrightness(-50)">-</button>
+                        <span id="bright-val" class="val-display">100%</span>
+                        <button class="step-btn" onclick="adjustBrightness(50)">+</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
