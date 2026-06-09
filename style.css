@@ -1,0 +1,69 @@
+body, html { margin: 0; padding: 0; background: #0b0b0f; color: white; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; height: 100vh; overflow: hidden; }
+
+#drop-zone-global { width: 100vw; height: 100vh; display: flex; align-items: center; justify-content: center; border: 2px dashed #222; position: relative; background: radial-gradient(circle at center, #151520 0%, #050508 100%); }
+
+.viewer-hidden, .panel-hidden { display: none !important; }
+
+.upload-msg { text-align: center; }
+.upload-msg h1 { font-size: 2.8rem; letter-spacing: -0.5px; margin-bottom: 5px; color: #fff; }
+.upload-msg p { color: #888; font-size: 1.1rem; margin-bottom: 25px; }
+
+.main-nav-buttons { display: flex; gap: 15px; justify-content: center; }
+
+/* Buttons styling */
+.primary-btn, .secondary-btn {
+    padding: 12px 24px; font-size: 14px; font-weight: 600; border-radius: 8px; cursor: pointer; transition: all 0.2s ease;
+}
+.primary-btn { background: #ffd700; color: black; border: none; }
+.primary-btn:hover { background: #ffe240; transform: translateY(-1px); }
+
+.secondary-btn { background: rgba(255, 255, 255, 0.05); color: #ffd700; border: 1px solid rgba(255, 215, 0, 0.3); backdrop-filter: blur(5px); }
+.secondary-btn:hover { background: rgba(255, 215, 0, 0.1); border-color: #ffd700; }
+
+/* Right Bottom Professional Footer */
+.footer-credit {
+    position: absolute; bottom: 20px; right: 25px; font-size: 12px; color: rgba(255, 255, 255, 0.4); letter-spacing: 0.5px; font-weight: 400; pointer-events: none;
+}
+
+/* Links Panel Glassmorphism Style */
+#links-panel {
+    position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(5, 5, 8, 0.95); z-index: 2000; display: flex; align-items: center; justify-content: center; backdrop-filter: blur(15px);
+}
+.links-content { width: 85%; max-width: 900px; text-align: center; }
+.links-content h2 { font-size: 2rem; margin-bottom: 40px; color: #ffd700; letter-spacing: 0.5px; }
+
+/* Link Cards Grid Layout */
+.grid-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px; }
+.grid-card {
+    background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 215, 0, 0.15); border-radius: 12px; padding: 25px 20px; text-decoration: none; color: white; display: flex; flex-direction: column; align-items: center; justify-content: center; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); backdrop-filter: blur(10px);
+}
+.grid-card:hover {
+    background: rgba(255, 215, 0, 0.06); border-color: #ffd700; transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+}
+.card-icon { font-size: 24px; margin-bottom: 12px; opacity: 0.8; }
+.grid-card h3 { font-size: 13px; font-weight: 600; text-transform: uppercase; margin: 0; letter-spacing: 0.8px; color: #eaeaea; text-align: center; line-height: 1.4; }
+.grid-card:hover h3 { color: #ffd700; }
+
+/* Modern Navigation Back Button Stylings */
+.back-nav-btn {
+    position: absolute; top: 30px; left: 30px; font-size: 14px; font-weight: 600; color: rgba(255, 255, 255, 0.7); cursor: pointer; z-index: 5000; display: flex; align-items: center; gap: 8px; transition: all 0.2s ease; background: rgba(255,255,255,0.03); padding: 8px 16px; border: 1px solid rgba(255,255,255,0.1); border-radius: 20px; letter-spacing: 0.3px;
+}
+.back-nav-btn .arrow { font-size: 18px; transition: transform 0.2s ease; color: #ffd700; }
+.back-nav-btn:hover { color: #ffd700; background: rgba(255, 215, 0, 0.05); border-color: rgba(255, 215, 0, 0.4); }
+.back-nav-btn:hover .arrow { transform: translateX(-4px); }
+
+#close-btn { position: absolute; top: 20px; right: 30px; font-size: 45px; color: #ffd700; cursor: pointer; z-index: 5000; transition: transform 0.2s; opacity: 0.7; }
+#close-btn:hover { transform: scale(1.1); opacity: 1; }
+
+/* Editor View Layout */
+#viewer { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: #000; z-index: 1000; display: flex; align-items: center; justify-content: center; }
+canvas { width: 100vw; height: 100vh; object-fit: contain; display: block; }
+.top-left-controls { position: absolute; top: 20px; left: 20px; display: flex; flex-direction: column; gap: 15px; z-index: 4000; }
+.control-box, .main-action-btn { background: rgba(15, 15, 20, 0.75); backdrop-filter: blur(12px); border: 1px solid rgba(255, 215, 0, 0.25); border-radius: 8px; padding: 10px 15px; display: flex; flex-direction: column; align-items: center; gap: 8px; }
+.main-action-btn { color: #ffd700; font-weight: bold; cursor: pointer; border: 1px solid #ffd700; width: 100%; transition: 0.3s; }
+.btn-group { display: flex; align-items: center; gap: 10px; }
+.step-btn { background: #ffd700; border: none; color: black; width: 35px; height: 35px; font-weight: bold; border-radius: 6px; cursor: pointer; transition: 0.2s; }
+.step-btn:active { transform: scale(0.9); }
+.label { font-size: 11px; text-transform: uppercase; color: #ffd700; letter-spacing: 1px; }
+.val-display { font-size: 14px; font-weight: bold; min-width: 50px; text-align: center; }
+#ai-status { position: absolute; display: none; background: rgba(0,0,0,0.8); padding: 10px 20px; border: 1px solid #ffd700; color: #ffd700; z-index: 4500; }
