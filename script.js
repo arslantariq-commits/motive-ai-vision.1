@@ -38,11 +38,13 @@ function handleFile(file) {
     if (!file || !file.type.startsWith('image/')) return;
     const reader = new FileReader();
     reader.onload = (e) => {
-        imgObj = new Image(); // Naya instance har baar taake memory leak na ho
+        imgObj = new Image(); 
         imgObj.onload = () => {
-            // Screen resolution ke mutabiq canvas scaling fix
+            // Internal drawing dimensions update
             canvas.width = imgObj.width;
             canvas.height = imgObj.height;
+            
+            // Viewer block ko phle show krein takay size calculate ho ske
             viewer.classList.remove('viewer-hidden');
             render();
         };
@@ -65,9 +67,9 @@ function render() {
     if (!imgObj.src) return;
     bValLabel.innerText = brightness + "%";
     pValLabel.innerText = pixels;
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
     
-    // Canvas state tracking optimization
+    // Canvas clear aur context isolation optimize kia h
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
     ctx.save();
     ctx.filter = `brightness(${brightness}%) contrast(${100 + pixels * 15}%) saturate(${100 + pixels * 3}%)`;
     ctx.drawImage(imgObj, 0, 0, canvas.width, canvas.height);
