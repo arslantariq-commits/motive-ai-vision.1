@@ -17,7 +17,7 @@ let pixels = 0;
 let isAiOn = false;
 let prevB = 100, prevP = 0;
 
-// 🎙️ وائس ریکگنیشن انجن لاجک
+// 🎙️ وائس ریکگنیشن انجن لاجک (Voice Navigation Engine)
 let recognition;
 let isListening = false;
 
@@ -71,15 +71,27 @@ if ('webkitSpeechRecognition' in window || 'SpeechRecognition' in window) {
     };
 }
 
+// 🪄 فکسڈ وائس کلک فنکشن (جو اب لنکس کو 100% نئے ٹیب میں اوپن کرے گا)
 function triggerVoiceClick(cardId) {
     const card = document.getElementById(cardId);
     if (card) {
+        // کارڈ کو پیلا کر کے چمکانے کا اینیمیشن ایفیکٹ
         card.style.borderColor = "#ffd700";
         card.style.background = "rgba(255, 215, 0, 0.15)";
-        card.click();
+        card.style.transform = "translateY(-4px)";
+        card.style.boxShadow = "0 10px 20px rgba(0, 0, 0, 0.3)";
+        
+        // جادوئی لائن: براؤزر بلاکر کو بائی پاس کر کے لنک کو نئے ٹیب میں اوپن کرو
+        if (card.href) {
+            window.open(card.href, '_blank');
+        }
+
+        // 1.2 سیکنڈ بعد کارڈ کو واپس نارمل کر دو
         setTimeout(() => {
             card.style.borderColor = "rgba(255, 215, 0, 0.15)";
             card.style.background = "rgba(255, 255, 255, 0.03)";
+            card.style.transform = "none";
+            card.style.boxShadow = "none";
         }, 1200);
     }
 }
@@ -103,14 +115,17 @@ closeLinksBtn.onclick = () => {
     closeLinksPanelViaVoice();
 };
 
-// اگر پہلی بار براؤزر بلاک کرے تو پینل پر کہیں بھی کلک کرنے سے ایکٹو ہو جائے گا
+// اگر پہلی بار براؤزر بلاک کرے تو پینل پر کہیں بھی کلک کرنے سے مائیک ایکٹو ہو جائے گا
 linksPanel.onclick = () => {
     if (recognition && !isListening) {
         recognition.start();
     }
 };
 
-// File Selection (آپ کے پرانے امیج فنکشنز)
+// ==========================================
+// 📸 آپ کے پرانے امیج ایڈیٹر اور کینوس کے فنکشنز
+// ==========================================
+
 const fileInput = document.getElementById('fileInput');
 fileInput.onchange = (e) => handleFile(e.target.files[0]);
 
@@ -188,7 +203,7 @@ document.getElementById('close-btn').onclick = () => {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 };
 
-// اسپلائن واٹرمارک ریموور لوپ
+// 🛑 اسپلائن واٹرمارک (Built with Spline) مٹانے کا پکا لوپ
 setInterval(() => {
     const viewer = document.getElementById('robotViewer');
     if (viewer && viewer.shadowRoot) {
